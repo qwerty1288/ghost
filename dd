@@ -1,0 +1,93 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("Ghost.lua ☢️", "Sentinel")
+
+local PlayerTab = Window:NewTab("Player")
+local PlayerSection = PlayerTab:NewSection("Player")
+
+local MainTab = Window:NewTab("Main")
+local MainSection = MainTab:NewSection("Main")
+
+local OtherTab = Window:NewTab("Other")
+local OtherSection = OtherTab:NewSection("Other")
+
+PlayerSection:NewKeybind("ToggleUI", "Duhhhh", Enum.KeyCode.V, function(s)
+Library:ToggleUI()
+end)
+
+--Walkspeed
+local WalkSpeedSlider = PlayerSection:NewSlider("WalkSpeed", "Sets your character's walk speed", 250, 16, function(s)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+--Jumppower
+local JumpPowerSlider = PlayerSection:NewSlider("JumpPower", "Sets your character's jump power", 250, 50, function(s)
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
+end)
+--Chat spoof
+local chatspoof = MainSection:NewButton("Chat Spoof", "spoof msg as someone else", function(s)
+    loadstring(game:HttpGet(('https://pastebin.com/raw/djBfk8Li'),true))()
+    local chatspoof = Enum.KeyCode.DELETE
+end)
+
+--admin cmds
+local admincmds = MainSection:NewButton("admin", "admin", function(s)
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+end)
+
+--wow
+local wow = MainSection:NewButton("airhub", "idiot", function(s)
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Exunys/AirHub/main/AirHub.lua"))()
+end)
+
+-- fe sword
+local fesword = MainSection:NewButton("fe sword", "idiot", function(s)
+local plr=game.Players.LocalPlayer;local tool=Instance.new("Tool",plr.Backpack)tool.GripPos=Vector3.new(0.1,-1,0)tool.Name="Sword"local k=Instance.new("Part",tool)k.Name="Handle"k.Size=Vector3.new(0.4,4,0.4)local l=Instance.new("Animation",tool)l.AnimationId="rbxassetid://218504594"local m=plr.Character.Humanoid:LoadAnimation(l)db=true;da=false;tool.Equipped:connect(function()tool.Activated:connect(function()if db==true then db=false;m:Play()wait()da=true;db=true;wait(0.1)da=false end end)end)k.Touched:connect(function(n)if da==true then local o=n.Parent.Humanoid;if o~=nil then local p=game.Players:FindFirstChild(n.Parent.Name)for j=1,10 do if p.Name~="RealAnimus"then game.ReplicatedStorage.meleeEvent:FireServer(p)end end end end end)
+
+end)
+
+--Lag switch
+local lagswitch = MainSection:NewToggle("Lag switcch", "idiot", function(s)
+setting = settings().Network
+local Effect = Instance.new("ColorCorrectionEffect")
+Effect.Parent = game.Lighting
+Effect.Saturation = -1
+Effect.Brightness = 0
+Effect.Contrast = 0
+
+toggle = false
+
+Effect.Enabled = false
+function onKeyPress(inputObject, gameProcessedEvent)
+if inputObject.KeyCode == Enum.KeyCode.RightAlt then
+if toggle == false then
+setting.IncomingReplicationLag = 1000
+Effect.Enabled = true
+toggle = true
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = game.Players.LocalPlayer.Character.Humanoid.WalkSpeed * 3
+else
+setting.IncomingReplicationLag = 0
+Effect.Enabled = false
+toggle = false
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+end
+end
+end
+game:GetService("UserInputService").InputBegan:connect(onKeyPress)
+end)
+
+
+--headless
+local headless = MainSection:NewButton("Headless", "idiot", function(s)
+local A_1 = "{...}" local A_2 = "All" local Event = game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest Event:FireServer(A_1, A_2)
+local lp = game:GetService "Players".LocalPlayer if lp.Character:FindFirstChild "Head" then local char = lp.Character char.Archivable = true local new = char:Clone() new.Parent = workspace lp.Character = new wait(2) local oldhum = char:FindFirstChildWhichIsA "Humanoid" local newhum = oldhum:Clone() newhum.Parent = char newhum.RequiresNeck = false oldhum.Parent = nil wait(2) lp.Character = char new:Destroy() wait(1) newhum:GetPropertyChangedSignal("Health"):Connect( function() if newhum.Health <= 0 then oldhum.Parent = lp.Character wait(1) oldhum:Destroy() end end) workspace.CurrentCamera.CameraSubject = char if char:FindFirstChild "Animate" then char.Animate.Disabled = true wait(.1) char.Animate.Disabled = false end lp.Character:FindFirstChild "Head":Destroy() end
+local A_1 = "{...}" local A_2 = "All" local Event = game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest Event:FireServer(A_1, A_2)
+end)
+
+--Anti kick
+local antikick = MainSection:NewButton("Anti kick", "idiot", function(s)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Exunys/Anti-Kick/main/Anti%20Kick.lua"))()
+end)
+ 
+--dex
+local dex = MainSection:NewButton("Dex", "idiot", function(s)
+    loadstring(game:HttpGet("https://gist.githubusercontent.com/DinosaurXxX/b757fe011e7e600c0873f967fe427dc2/raw/ee5324771f017073fc30e640323ac2a9b3bfc550/dark%2520dex%2520v4"))()
+end)
