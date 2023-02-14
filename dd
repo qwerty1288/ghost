@@ -94,7 +94,6 @@ end)
 
 -- item giver
 local guns = OtherSection:NewDropdown("guns", "gives you gun", ["M9", "Remington 870", "AK 47"] function(s)
-
 local A_1 = game:GetService("Workspace")["Prison_ITEMS"].giver[s].ITEMPICKUP
 local Event = game:GetService("Workspace").Remote.ItemHandler
 Event:InvokeServer(A_1)
